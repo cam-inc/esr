@@ -2,7 +2,7 @@
   "name": "esr",
   "version": "0.0.0",
   "description": "Express-like Simple Router for client-side.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "jsnext:main": "lib/index.js",
   "module": "lib/index.js",
   "modules.root": "lib",
