@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/cam-inc/esr/issues"
   },
-  "homepage": "https://github.com/cam-inc/esr#readme"
+  "homepage": "https://github.com/cam-inc/esr#readme",
+  "dependencies": {
+    "history": "^4.6.1",
+    "mout": "^1.0.0",
+    "path-to-regexp": "^1.7.0"
+  }
 }
