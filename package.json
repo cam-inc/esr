@@ -1,0 +1,25 @@
+{
+  "name": "esr",
+  "version": "1.0.0",
+  "description": "Express-like Simple Router for client-side.",
+  "main": "index.js",
+  "jsnext:main": "lib/index.js",
+  "module": "lib/index.js",
+  "modules.root": "lib",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cam-inc/esr.git"
+  },
+  "author": "CA Mobile, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cam-inc/esr/issues"
+  },
+  "homepage": "https://github.com/cam-inc/esr#readme"
+}
