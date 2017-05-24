@@ -1,6 +1,6 @@
 {
   "name": "esr",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Express-like Simple Router for client-side.",
   "main": "index.js",
   "jsnext:main": "lib/index.js",
