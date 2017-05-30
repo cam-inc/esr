@@ -37,16 +37,16 @@ router.navigateTo('/users');
 import Esr from 'esr';
 
 // HTML5 history APIで履歴管理。
-const router = new Esr('browser');
+const router = new Esr(Esr.BROWSER);
 
 // メモリ内で履歴管理。
-const router = new Esr('memory');
+const router = new Esr(Esr.MEMORY);
 
 // ハッシュ(#)で履歴管理。
-const router = new Esr('hash');
+const router = new Esr(Esr.HASH);
 ```
 
-デフォルトは`browser`です。
+デフォルトは`Esr.BROWSER`です。
 
 [詳細](https://github.com/reacttraining/history#usage)
 
@@ -316,4 +316,16 @@ $ npm run test
 
 ```
 $ npm run build
+```
+
+## 監視
+
+```
+$ npm run watch
+```
+
+## リント
+
+```
+$ npm run lint
 ```

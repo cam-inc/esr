@@ -37,16 +37,16 @@ Esr provides 3 different methods for creating a history object, depending on you
 import Esr from 'esr';
 
 // use HTML5 history API.
-const router = new Esr('browser');
+const router = new Esr(Esr.BROWSER);
 
 // use memory.
-const router = new Esr('memory');
+const router = new Esr(Esr.MEMORY);
 
 // use hash.
-const router = new Esr('hash');
+const router = new Esr(Esr.HASH);
 ```
 
-default is `browser`.
+default is `Esr.BROWSER`.
 
 [more detail](https://github.com/reacttraining/history#usage)
 

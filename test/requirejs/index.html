@@ -12,8 +12,8 @@
           'esr': '../../dist/amd.esr'
         }
       });
-      require(['esr'], function (esr) {
-        // TODO
+      require(['esr'], function (Esr) {
+        var router = new Esr(Esr.BROWSER);
       });
     </script>
   </body>

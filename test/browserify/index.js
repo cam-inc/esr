@@ -1,11 +1,12 @@
-var esr = require('../../index');
+var Esr = require('../../index');
 
 // debug browser.
 if (window) {
-  window.esr = esr;
+  window.Esr = Esr;
+  var router = new Esr(Esr.BROWSER);
 }
 
-if (esr) {
+if (Esr) {
   document.getElementById("result").innerText ='Successful';
 } else {
   document.getElementById("result").innerText ='Failure';

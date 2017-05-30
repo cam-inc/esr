@@ -3490,8 +3490,14 @@ var index_5 = index$3.createMemoryHistory;
 var index_6 = index$3.createHashHistory;
 var index_7 = index$3.createBrowserHistory;
 
+var constants = {
+  BROWSER: 'BROWSER',
+  MEMORY: 'MEMORY',
+  HASH: 'HASH'
+};
+
 var Router = function Router(type) {
-  if ( type === void 0 ) type = 'browser';
+  if ( type === void 0 ) type = constants.BROWSER;
 
   /**
    * hash history object.
@@ -3499,13 +3505,13 @@ var Router = function Router(type) {
    * @type {Object}
    */
   switch (type) {
-  case 'browser':
+  case constants.BROWSER:
     this._history = index_7();
     break;
-  case 'memory':
+  case constants.MEMORY:
     this._history = index_5();
     break;
-  case 'hash':
+  case constants.HASH:
     this._history = index_6();
     break;
   default:
@@ -3817,5 +3823,9 @@ Router.prototype._parseLocation = function _parseLocation (location, route) {
     hash: hash
   };
 };
+
+Router.BROWSER = constants.BROWSER;
+Router.MEMORY = constants.MEMORY;
+Router.HASH = constants.HASH;
 
 module.exports = Router;

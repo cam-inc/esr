@@ -7,24 +7,30 @@ import {
   createHashHistory
 } from 'history';
 
+const constants = {
+  BROWSER: 'BROWSER',
+  MEMORY: 'MEMORY',
+  HASH: 'HASH'
+};
+
 class Router {
   /**
    * @param {String} type type of history object. this should be one of 'browser', 'memory' or 'hash'.
    */
-  constructor(type = 'browser') {
+  constructor(type = constants.BROWSER) {
     /**
      * hash history object.
      * @private
      * @type {Object}
      */
     switch (type) {
-    case 'browser':
+    case constants.BROWSER:
       this._history = createBrowserHistory();
       break;
-    case 'memory':
+    case constants.MEMORY:
       this._history = createMemoryHistory();
       break;
-    case 'hash':
+    case constants.HASH:
       this._history = createHashHistory();
       break;
     default:
@@ -328,5 +334,9 @@ class Router {
     };
   }
 }
+
+Router.BROWSER = constants.BROWSER;
+Router.MEMORY = constants.MEMORY;
+Router.HASH = constants.HASH;
 
 export default Router;
