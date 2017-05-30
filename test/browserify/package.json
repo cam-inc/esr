@@ -3,8 +3,7 @@
   "private": true,
   "devDependencies": {
     "chokidar-cli": "^1.2.0",
-    "browserify": "^11.0.1",
-    "esr": "../../"
+    "browserify": "^11.0.1"
   },
   "scripts": {
     "watch": "chokidar index.js -c 'npm run build'",

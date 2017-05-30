@@ -2376,7 +2376,7 @@ var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a
 
 var warning = function() {};
 
-if (process.env.NODE_ENV !== 'production') {
+{
   warning = function(condition, format, args) {
     var arguments$1 = arguments;
 
@@ -2440,7 +2440,7 @@ var browser = warning;
  */
 
 var invariant = function(condition, format, a, b, c, d, e, f) {
-  if (process.env.NODE_ENV !== 'production') {
+  {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
     }

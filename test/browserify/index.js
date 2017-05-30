@@ -1,8 +1,8 @@
-var esr = require('esr');
+var esr = require('../../index');
 
 // debug browser.
 if (window) {
-  window.riot = esr;
+  window.esr = esr;
 }
 
 if (esr) {

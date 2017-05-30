@@ -57,7 +57,7 @@ module.exports = (config) => {
       intro: intro,
       plugins: [
         replace({
-          'process.env.NODE_ENV': '"production"' // local/development/staging/production
+          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
         nodeResolve({
           jsnext: true,
