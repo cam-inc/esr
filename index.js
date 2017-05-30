@@ -1,4 +1,6 @@
 /* esr version 0.0.2 */
+'use strict';
+
 var VERSION = "0.0.2";
 
 /**
@@ -3820,4 +3822,4 @@ Router.prototype._parseLocation = function _parseLocation (location, route) {
   };
 };
 
-export default Router;
+module.exports = Router;
