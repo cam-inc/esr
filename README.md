@@ -317,3 +317,15 @@ $ npm run test
 ```
 $ npm run build
 ```
+
+## Watch
+
+```
+$ npm run watch
+```
+
+## Lint
+
+```
+$ npm run lint
+```

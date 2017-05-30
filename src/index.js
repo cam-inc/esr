@@ -1,4 +1,4 @@
-import { filter, find, forEach } from 'mout/array';
+import { find, forEach } from 'mout/array';
 import pathToRegexp from 'path-to-regexp';
 import Promise from 'promise-polyfill';
 import {
@@ -29,7 +29,7 @@ class Router {
       break;
     default:
       break;
-    };
+    }
 
     /**
      * routing definitions.
@@ -235,9 +235,6 @@ class Router {
     }
 
     const data = this._parseLocation(location, route);
-    const splitedPathname = filter(location.pathname.split('/'), v => {
-      return !!v;
-    });
 
     // whether the routing was canceled and replaced.
     let isReplaced = false;

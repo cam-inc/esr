@@ -1433,9 +1433,8 @@ var array = {
     'zip' : zip_1
 };
 
-var array_1 = array.filter;
-var array_2 = array.find;
-var array_3 = array.forEach;
+var array_1 = array.find;
+var array_2 = array.forEach;
 
 var index$1 = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
@@ -3718,7 +3717,7 @@ Router.prototype.createHref = function createHref (pathname) {
 Router.prototype._change = function _change (location/*, action */) {
     var this$1 = this;
 
-  var route = array_2(this._routes, function (route) {
+  var route = array_1(this._routes, function (route) {
     return !!route.regexp.exec(location.pathname);
   });
 
@@ -3727,9 +3726,6 @@ Router.prototype._change = function _change (location/*, action */) {
   }
 
   var data = this._parseLocation(location, route);
-  var splitedPathname = array_1(location.pathname.split('/'), function (v) {
-    return !!v;
-  });
 
   // whether the routing was canceled and replaced.
   var isReplaced = false;
@@ -3801,12 +3797,12 @@ Router.prototype._change = function _change (location/*, action */) {
 Router.prototype._parseLocation = function _parseLocation (location, route) {
   var params = {};
   var list = route.regexp.exec(location.pathname).slice(1);
-  array_3(route.keys, function (v, i) {
+  array_2(route.keys, function (v, i) {
     params[v.name] = list[i];
   });
 
   var queries = {};
-  array_3(location.search.slice(1).split('&'), function (v) {
+  array_2(location.search.slice(1).split('&'), function (v) {
     if (!v) {
       return;
     }

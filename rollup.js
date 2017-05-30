@@ -8,7 +8,7 @@ const
   intro = require('./rollup.vars').intro;
 
 let namedExports = {
-  'node_modules/mout/array.js': [ 'filter', 'find', 'forEach' ]
+  'node_modules/mout/array.js': [ 'find', 'forEach' ]
 };
 
 // @see https://github.com/rollup/rollup/wiki/JavaScript-API
