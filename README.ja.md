@@ -27,7 +27,6 @@ router.start();
 
 // 別ページに遷移
 router.navigateTo('/users');
-
 ```
 
 ## コンストラクタ
@@ -106,11 +105,11 @@ router.on('*', function() {
 });
 
 router.navigateTo('/users');
-// => `users`
+//=> 'users'
 router.navigateTo('/users/foo');
-// => `a user`
+//=> 'a user'
 router.navigateTo('/bar');
-// => `not found`
+//=> 'not found'
 
 ```
 
@@ -132,6 +131,7 @@ router.on('/users/:userid', function(route) {
 });
 
 router.navigateTo('/users/foo');
+//=> 'a user';
 ```
 
 #### route
@@ -177,19 +177,19 @@ import Esr from 'esr';
 const router = new Esr();
 
 router.on('/aaa', function(route) {
-  // console.log('onEnter of /aaa');
+  console.log('onEnter of /aaa');
 }, function(route, replace) {
-  // console.log('onBefore of /aaa');
+  console.log('onBefore of /aaa');
 });
 
 router.on('/bbb', function(route) {
-  // console.log('onEnter of /bbb');
+  console.log('onEnter of /bbb');
 });
 
 router.navigateTo('/aaa');
-// 'onBefore of /aaa'
-// ('onEnter of /bbb') <= this won't be logged.
-// 'onEnter of /bbb'
+//=> 'onBefore of /aaa'
+//(=> 'onEnter of /bbb') <= this won't be logged.
+//=> 'onEnter of /bbb'
 ```
 
 ### onAfter
@@ -280,13 +280,13 @@ router.on('/users',function(route) {
 });
 
 router.navigateto('/users');
-// 'onBefore'
-// wait for 1000ms...
-// 'onEnter'
-// wait for 1000ms...
-// 'onAfter'
-// wait for 1000ms...
-// 'complete!'
+//=> 'onBefore'
+//=> wait for 1000ms...
+//=> 'onEnter'
+//=> wait for 1000ms...
+//=> 'onAfter'
+//=> wait for 1000ms...
+//=> 'complete!'
 ```
 
 ## テスト
