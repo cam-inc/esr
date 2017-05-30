@@ -95,6 +95,9 @@ class Router {
    * stop listening.
    */
   stop() {
+    if (!this._unlistener) {
+      return;
+    }
     this._unlistener();
     this._unlistener = null;
   }

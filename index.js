@@ -3579,6 +3579,9 @@ Router.prototype.start = function start (autoExec) {
  * stop listening.
  */
 Router.prototype.stop = function stop () {
+  if (!this._unlistener) {
+    return;
+  }
   this._unlistener();
   this._unlistener = null;
 };
