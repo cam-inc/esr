@@ -1,6 +1,6 @@
 {
   "name": "esr",
-  "version": "0.0.2",
+  "version": "0.9.1",
   "description": "Express-like Simple Router for client-side.",
   "main": "lib/index.js",
   "jsnext:main": "lib/index.js",
@@ -27,7 +27,9 @@
     "url": "git+https://github.com/cam-inc/esr.git"
   },
   "keywords": [
-    "router"
+    "router",
+    "browser",
+    "history"
   ],
   "author": "CA Mobile, Inc.",
   "license": "MIT",

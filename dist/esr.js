@@ -1,8 +1,8 @@
-/* esr version 0.0.2 */
+/* esr version 0.9.1 */
 var esr = (function () {
 'use strict';
 
-var VERSION = "0.0.2";
+var VERSION = "0.9.1";
 
 /**
      * Appends an array to the end of another.
