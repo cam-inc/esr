@@ -31,14 +31,14 @@ module.exports = (config) => {
       '../../src/index.js',
       'spec.js'
     ],
-    frameworks: ['mocha', 'power-assert'],
+    frameworks: ['mocha', 'expect'],
     logLevel: config.LOG_DEBUG,
     //logLevel: config.LOG_ERROR,
     plugins: [
       'karma-rollup-plugin',
       'karma-mocha',
       'karma-mocha-reporter',
-      'karma-power-assert',
+      'karma-expect',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-safari-launcher',
@@ -52,7 +52,7 @@ module.exports = (config) => {
     rollupPreprocessor: {
       // context: 'this',
       format: 'iife',
-      moduleName: 'esr',
+      moduleName: 'Esr',
       banner: banner,
       intro: intro,
       plugins: [
