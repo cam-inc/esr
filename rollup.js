@@ -5,7 +5,8 @@ const
   commonjs = require('rollup-plugin-commonjs'),
   banner = require('./rollup.vars').banner,
   banner_bundle = require('./rollup.vars').banner_bundle,
-  intro = require('./rollup.vars').intro;
+  intro = require('./rollup.vars').intro,
+  replace = require('rollup-plugin-replace');
 
 let namedExports = {
   'node_modules/mout/array.js': [ 'find', 'forEach' ]
@@ -17,6 +18,9 @@ let namedExports = {
 rollup.rollup({
   entry: 'src/index.js',
   plugins: [
+    replace({
+      'process.env.NODE_ENV': '"production"' // local/development/staging/production
+    }),
     nodeResolve({
       jsnext: true,
       main: true,
@@ -51,6 +55,9 @@ rollup.rollup({
 rollup.rollup({
   entry: 'src/index.js',
   plugins: [
+    replace({
+      'process.env.NODE_ENV': '"production"' // local/development/staging/production
+    }),
     nodeResolve({
       jsnext: true,
       main: true,
