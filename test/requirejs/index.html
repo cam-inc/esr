@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>esr on require.js</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  </head>
+  <body>
+    <script src="bower_components/requirejs/require.js"></script>
+    <script>
+      require.config({
+        paths: {
+          'esr': '../../dist/amd.esr'
+        }
+      });
+      require(['esr'], function (Esr) {
+        var router = new Esr(Esr.BROWSER);
+      });
+    </script>
+  </body>
+</html>

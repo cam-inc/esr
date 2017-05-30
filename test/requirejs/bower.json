@@ -1,0 +1,7 @@
+{
+  "name": "esr-test",
+  "private": true,
+  "dependencies": {
+    "requirejs": "~2.1.20"
+  }
+}

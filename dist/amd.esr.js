@@ -1,4 +1,6 @@
 /* esr version 0.0.2 */
+define(function () { 'use strict';
+
 var VERSION = "0.0.2";
 
 /**
@@ -3829,4 +3831,6 @@ Router.BROWSER = constants.BROWSER;
 Router.MEMORY = constants.MEMORY;
 Router.HASH = constants.HASH;
 
-export default Router;
+return Router;
+
+});

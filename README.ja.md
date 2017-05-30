@@ -2,59 +2,59 @@
 
 # Express-like Simple Router.
 
-## Install
+## インストール
 
 ```
 $ npm install --save esr
 ```
 
-## Sample
+## サンプル
 
 ```javascript
 import Esr from 'esr';
 
-// create an instance.
+// インスタンス作成
 const router = new Esr();
 
-// routing definition.
+// ルーティング定義
 const onEnter = function() {
-  // called when the url got changed to `/users`.
+  // URLが`/users`に変更された時の処理。
 };
 router.on('/users', onEnter);
 
-// start listening for the url to change.
+// ルーティング監視開始
 router.start();
 
-// change the url.
+// 別ページに遷移
 router.navigateTo('/users');
 ```
 
-## Constructor
+## コンストラクタ
 
-Esr provides 3 different methods for creating a history object, depending on your environment.
+インスタンス作成時に履歴管理方法を指定出来ます。
 
 ```javascript
 import Esr from 'esr';
 
-// use HTML5 history API.
+// HTML5 history APIで履歴管理。
 const router = new Esr(Esr.BROWSER);
 
-// use memory.
+// メモリ内で履歴管理。
 const router = new Esr(Esr.MEMORY);
 
-// use hash.
+// ハッシュ(#)で履歴管理。
 const router = new Esr(Esr.HASH);
 ```
 
-default is `Esr.BROWSER`.
+デフォルトは`Esr.BROWSER`です。
 
-[more detail](https://github.com/reacttraining/history#usage)
+[詳細](https://github.com/reacttraining/history#usage)
 
-## Routing
+## ルーティング
 
 ### `router.navigateTo(String)`
 
-change current url.
+指定URLにルーティングします。
 
 ```javascript
 import Esr from 'esr';
@@ -68,7 +68,7 @@ router.navigateTo('/users/foo?aaa=bbb#ccc');
 
 ### `router.replace(String)`
 
-replace current url.
+現在のURLを指定値に書き換えます。
 
 ```javascript
 import Esr from 'esr';
@@ -79,7 +79,7 @@ router.replace('/users');
 
 ### `router.start(Boolean)`
 
-start listening for the url to change. a boolean argument can be passed to determine whether the esr should fire route an event or not. default is `true`.
+ルーティング監視を開始します。渡す引数によって、start時に`pattern`マッチを行うか否かが決定されます。デフォルトは`true`です。
 
 ```javascript
 import Esr from 'esr';
@@ -89,23 +89,23 @@ router.on('/users', function(route) {
   console.log('users');
 });
 
-// suppose that the current url is `https://sample.com/users`.
+// 現在のURLが`https://sample.com/users`だと仮定する。
 router.start();
 //=> 'users'
 ```
 
-## `router.on` Routing Definition.
+## `router.on` ルーティング定義
 
-`router.on(pattern, onEnter, onBefore, onAfter)` for routing definition.
+`router.on(pattern, onEnter, onBefore, onAfter)`でルーティング定義を行います。
 
 ### pattern
 
 type: `String`
 example: `/users/:userid`
 
-set pattern to match.
+マッチ対象のpathを指定します。
 
-[Express](http://expressjs.com/ja/)-Style pattern is applied.
+[Express](http://expressjs.com/ja/)スタイルで指定可能です。
 
 ```javascript
 import Esr from 'esr';
@@ -130,14 +130,14 @@ router.navigateTo('/bar');
 
 ```
 
-[more detail](https://github.com/pillarjs/path-to-regexp#parameters)
+[詳細](https://github.com/pillarjs/path-to-regexp#parameters)
 
 ### onEnter
 
 type: `Function`
 example: `function(route)`
 
-a callback function that will be called when the url matches the `pattern`.
+URLが`pattern`にマッチした際に実行される関数を指定します。
 
 ```javascript
 import Esr from 'esr';
@@ -153,11 +153,11 @@ router.navigateTo('/users/foo');
 
 #### route
 
-`route` object consists of some extra information.
+`onEnter`実行時に様々な情報を格納した`route`オブジェクトが渡されます。
 
-- `route.params`(Object) key-value data matched on the `pattern`.
-- `route.queries`(Object) key-value data of query.
-- `route.hash`(String) hash value.
+- `route.params`(Object) `pattern`に対応した値がkey-valueで設定されます。
+- `route.queries`(Object) クエリ値がkey-valueで設定されます。
+- `route.hash`(String) ハッシュ値が設定されます。
 
 ```javascript
 import Esr from 'esr';
@@ -179,15 +179,15 @@ router.navigateTo('/users/foo/bar?aaa=AAA&bbb=BBB#ccc');
 type: `Function`
 example: `function(route, replace)`
 
-a callback function that will be called just before `onEnter` when the url matches the `pattern`.
+URLが`pattern`にマッチした際に`onEnter`直前に実行される関数を指定します。
 
 #### route
 
-same as `route` of `onEnter`.
+`onEnter`の`route`と同じです。
 
 #### replace
 
-a function used to redirect to another url.
+`onBefore`実行時にリダイレクト用の関数が渡されます。
 
 ```javascript
 import Esr from 'esr';
@@ -214,20 +214,20 @@ router.navigateTo('/aaa');
 type: `Function`
 example: `function(route)`
 
-a callback function that will be called just after `onEnter` when the url matches the `pattern`.
+URLが`pattern`にマッチした際に`onEnter`直後に実行される関数を指定します。
 
 #### route
 
-same as `route` of `onEnter`.
+`onEnter`の`route`と同じです。
 
-## Common Routing Definition
+## 共通ルーティング定義
 
-callback functions that will be called for every url pattern.
+`router.on`がマッチする`pattern`に対するルーティング定義を行うAPIであるのに対して、以下のAPIは全URLに対するルーティング定義を行います。
 
-- `router.onBeforeOnce` called only once. just before `router.on`'s callback.
-- `router.onBefore` called just before `router.on`'s callback.
-- `router.onAfter` called just after `router.on`'s callback.
-- `router.onAfterOnce` called only once. just after `router.on`'s callback.
+- `router.onBeforeOnce` 一度だけ`router.on`直前に発火します。
+- `router.onBefore` `router.on`直前に発火します。
+- `router.onAfter` `router.on`直後に発火します。
+- `router.onAfterOnce` 一度だけ`router.on`直後に発火します。
 
 ```javascript
 import Esr from 'esr';
@@ -263,9 +263,9 @@ router.navigateTo('/second');
 //=> 'after'
 ```
 
-## Async
+## 非同期処理
 
-By passing a callback function that returns a Promise, you can handle async programing.
+Promiseを返す関数をルーティング定義時に渡すことで非同期実行が可能になります。
 
 ```javascript
 import Esr from 'esr';
@@ -306,25 +306,25 @@ router.navigateto('/users');
 //=> 'complete!'
 ```
 
-## Test
+## テスト
 
 ```
 $ npm run test
 ```
 
-## Build
+## ビルド
 
 ```
 $ npm run build
 ```
 
-## Watch
+## 監視
 
 ```
 $ npm run watch
 ```
 
-## Lint
+## リント
 
 ```
 $ npm run lint
