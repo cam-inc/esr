@@ -77,6 +77,23 @@ const router = new Esr();
 router.replace('/users');
 ```
 
+### `router.start(Boolean)`
+
+ルーティング監視を開始します。渡す引数によって、start時に`pattern`マッチを行うか否かが決定されます。デフォルトは`true`です。
+
+```javascript
+import Esr from 'esr';
+const router = new Esr();
+
+router.on('/users', function(route) {
+  console.log('users');
+});
+
+// 現在のURLが`https://sample.com/users`だと仮定する。
+router.start();
+//=> 'users'
+```
+
 ## `router.on` ルーティング定義
 
 `router.on(pattern, onEnter, onBefore, onAfter)`でルーティング定義を行います。
@@ -281,11 +298,11 @@ router.on('/users',function(route) {
 
 router.navigateto('/users');
 //=> 'onBefore'
-//=> wait for 1000ms...
+// wait for 1000ms...
 //=> 'onEnter'
-//=> wait for 1000ms...
+// wait for 1000ms...
 //=> 'onAfter'
-//=> wait for 1000ms...
+// wait for 1000ms...
 //=> 'complete!'
 ```
 
