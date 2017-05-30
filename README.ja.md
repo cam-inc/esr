@@ -2,13 +2,13 @@
 
 # Express-like Simple Router.
 
-# インストール
+## インストール
 
 ```
 $ npm install --save esr
 ```
 
-# サンプル
+## サンプル
 
 ```javascript
 import Esr from 'esr';
@@ -30,11 +30,11 @@ router.navigateTo('/users');
 
 ```
 
-# コンストラクタ
+## コンストラクタ
 
 インスタンス作成時に履歴管理方法を指定出来ます。
 
-```
+```javascript
 import Esr from 'esr';
 
 // HTML5 history APIで履歴管理。
@@ -51,9 +51,9 @@ const router = new Esr('hash');
 
 [詳細](https://github.com/reacttraining/history#usage)
 
-# ルーティング
+## ルーティング
 
-## `router.navigateTo(String)`
+### `router.navigateTo(String)`
 
 指定URLにルーティングします。
 
@@ -67,7 +67,7 @@ router.navigateTo('/users/foo?aaa=bbb');
 router.navigateTo('/users/foo?aaa=bbb#ccc');
 ```
 
-## `router.replace(String)`
+### `router.replace(String)`
 
 現在のURLを指定値に書き換えます。
 
@@ -78,11 +78,11 @@ const router = new Esr();
 router.replace('/users');
 ```
 
-# `router.on` ルーティング定義
+## `router.on` ルーティング定義
 
 `router.on(pattern, onEnter, onBefore, onAfter)`でルーティング定義を行います。
 
-## pattern
+### pattern
 
 type: `String`
 example: `/users/:userid`
@@ -91,7 +91,7 @@ example: `/users/:userid`
 
 [Express](http://expressjs.com/ja/)スタイルで指定可能です。
 
-```
+```javascript
 import Esr from 'esr';
 const router = new Esr();
 
@@ -116,14 +116,14 @@ router.navigateTo('/bar');
 
 [詳細](https://github.com/pillarjs/path-to-regexp#parameters)
 
-## onEnter
+### onEnter
 
 type: `Function`
 example: `function(route)`
 
 URLが`pattern`にマッチした際に実行される関数を指定します。
 
-```
+```javascript
 import Esr from 'esr';
 const router = new Esr();
 
@@ -134,7 +134,7 @@ router.on('/users/:userid', function(route) {
 router.navigateTo('/users/foo');
 ```
 
-### route
+#### route
 
 `onEnter`実行時に様々な情報を格納した`route`オブジェクトが渡されます。
 
@@ -157,18 +157,18 @@ router.on('/users/:userid/:type', function(route) {
 router.navigateTo('/users/foo/bar?aaa=AAA&bbb=BBB#ccc');
 ```
 
-## onBefore
+### onBefore
 
 type: `Function`
 example: `function(route, replace)`
 
 URLが`pattern`にマッチした際に`onEnter`直前に実行される関数を指定します。
 
-### route
+#### route
 
 `onEnter`の`route`と同じです。
 
-### replace
+#### replace
 
 `onBefore`実行時にリダイレクト用の関数が渡されます。
 
@@ -192,18 +192,18 @@ router.navigateTo('/aaa');
 // 'onEnter of /bbb'
 ```
 
-## onAfter
+### onAfter
 
 type: `Function`
 example: `function(route)`
 
 URLが`pattern`にマッチした際に`onEnter`直後に実行される関数を指定します。
 
-### route
+#### route
 
 `onEnter`の`route`と同じです。
 
-# 共通ルーティング定義
+## 共通ルーティング定義
 
 `router.on`がマッチする`pattern`に対するルーティング定義を行うAPIであるのに対して、以下のAPIは全URLに対するルーティング定義を行います。
 
@@ -246,7 +246,7 @@ router.navigateTo('/second');
 //=> 'after'
 ```
 
-# 非同期処理
+## 非同期処理
 
 Promiseを返す関数をルーティング定義時に渡すことで非同期実行が可能になります。
 
@@ -289,13 +289,13 @@ router.navigateto('/users');
 // 'complete!'
 ```
 
-# テスト
+## テスト
 
 ```
 $ npm run test
 ```
 
-# ビルド
+## ビルド
 
 ```
 $ npm run build
