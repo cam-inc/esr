@@ -1,3 +1,3 @@
-# Express-like Simple Router.
+[日本語](README.ja.md)
 
-under development!!
+# Express-like Simple Router.
