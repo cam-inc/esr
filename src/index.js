@@ -333,7 +333,8 @@ class Router {
     return {
       params,
       queries,
-      hash
+      hash,
+      pathname: location.pathname
     };
   }
 }
