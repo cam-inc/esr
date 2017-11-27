@@ -171,12 +171,13 @@ class Router {
   /**
    * navigate to target location.
    * @param {String|Object} path e.g.) '/foo' or { pathname, search, hash }
+   * @param {Boolean} force force to navigate even if path is the same as previous one.
    */
-  navigateTo(path) {
+  navigateTo(path, force = false) {
     return Promise
       .resolve()
       .then(() => {
-        if (this.getCurrentLocation().pathname === path) {
+        if (!force && this.getCurrentLocation().pathname === path) {
           console.warn('same path is passed.');
           return;
         }

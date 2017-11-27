@@ -1,7 +1,7 @@
-/* esr version 0.9.2 */
+/* esr version 0.9.3 */
 define(function () { 'use strict';
 
-var VERSION = "0.9.2";
+var VERSION = "0.9.3";
 
 /**
      * Appends an array to the end of another.
@@ -3497,14 +3497,16 @@ Router.prototype.onAfterOnce = function onAfterOnce (func) {
 /**
  * navigate to target location.
  * @param {String|Object} path e.g.) '/foo' or { pathname, search, hash }
+ * @param {Boolean} force force to navigate even if path is the same as previous one.
  */
-Router.prototype.navigateTo = function navigateTo (path) {
+Router.prototype.navigateTo = function navigateTo (path, force) {
     var this$1 = this;
+    if ( force === void 0 ) force = false;
 
   return promise
     .resolve()
     .then(function () {
-      if (this$1.getCurrentLocation().pathname === path) {
+      if (!force && this$1.getCurrentLocation().pathname === path) {
         console.warn('same path is passed.');
         return;
       }

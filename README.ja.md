@@ -52,9 +52,9 @@ const router = new Esr(Esr.HASH);
 
 ## ルーティング
 
-### `router.navigateTo(String)`
+### `router.navigateTo(String, Boolean)`
 
-指定URLにルーティングします。
+指定URLにルーティングします。第二引数にtrueを渡すと強制的に画面遷移します。
 
 ```javascript
 import Esr from 'esr';
@@ -64,6 +64,7 @@ router.navigateTo('/users');
 router.navigateTo('/users/foo');
 router.navigateTo('/users/foo?aaa=bbb');
 router.navigateTo('/users/foo?aaa=bbb#ccc');
+router.navigateTo('/users', true);
 ```
 
 ### `router.replace(String)`

@@ -52,9 +52,9 @@ default is `Esr.BROWSER`.
 
 ## Routing
 
-### `router.navigateTo(String)`
+### `router.navigateTo(String, Boolean)`
 
-change current url.
+change current url. set secound parameter `true` to force navigate.
 
 ```javascript
 import Esr from 'esr';
@@ -64,6 +64,7 @@ router.navigateTo('/users');
 router.navigateTo('/users/foo');
 router.navigateTo('/users/foo?aaa=bbb');
 router.navigateTo('/users/foo?aaa=bbb#ccc');
+router.navigateTo('/users', true);
 ```
 
 ### `router.replace(String)`
