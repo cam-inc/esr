@@ -8,10 +8,6 @@ const
 
 var debug = !!process.env.DEBUG ? true : false;
 
-let namedExports = {
-  'node_modules/mout/array.js': [ 'find', 'forEach' ]
-};
-
 module.exports = (config) => {
   config.set({
     autoWatch: true,
@@ -35,7 +31,7 @@ module.exports = (config) => {
     logLevel: config.LOG_DEBUG,
     //logLevel: config.LOG_ERROR,
     plugins: [
-      'karma-rollup-plugin',
+      'karma-rollup-preprocessor',
       'karma-mocha',
       'karma-mocha-reporter',
       'karma-expect',
@@ -52,7 +48,7 @@ module.exports = (config) => {
     rollupPreprocessor: {
       // context: 'this',
       format: 'iife',
-      moduleName: 'Esr',
+      name: 'Esr',
       banner: banner,
       intro: intro,
       plugins: [
@@ -65,8 +61,7 @@ module.exports = (config) => {
           browser: true
         }),
         commonjs({
-          include: 'node_modules/**',
-          namedExports: namedExports
+          include: 'node_modules/**'
         }),
         buble()
       ],

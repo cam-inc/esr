@@ -8,15 +8,9 @@ const
   intro = require('./rollup.vars').intro,
   replace = require('rollup-plugin-replace');
 
-let namedExports = {
-  'node_modules/mout/array.js': [ 'find', 'forEach' ]
-};
-
-// @see https://github.com/rollup/rollup/wiki/JavaScript-API
-
 /// iife/amd
 rollup.rollup({
-  entry: 'src/index.js',
+  input: 'src/index.js',
   plugins: [
     replace({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
@@ -27,24 +21,23 @@ rollup.rollup({
       browser: true
     }),
     commonjs({
-      include: 'node_modules/**',
-      namedExports: namedExports
+      include: 'node_modules/**'
     }),
     buble()
   ]
 }).then(bundle => {
   bundle.write({
     format: 'iife',
-    moduleName: 'esr',
+    name: 'esr',
     banner: banner,
     intro: intro,
-    dest: 'dist/esr.js'
+    file: 'dist/esr.js'
   });
   bundle.write({
     format: 'amd',
     banner: banner,
     intro: intro,
-    dest: 'dist/amd.esr.js'
+    file: 'dist/amd.esr.js'
   });
 }).catch(error => {
   console.error(error);
@@ -53,7 +46,7 @@ rollup.rollup({
 
 /// es/cjs
 rollup.rollup({
-  entry: 'src/index.js',
+  input: 'src/index.js',
   plugins: [
     replace({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
@@ -64,8 +57,7 @@ rollup.rollup({
       browser: true
     }),
     commonjs({
-      include: 'node_modules/**',
-      namedExports: namedExports
+      include: 'node_modules/**'
     }),
     buble()
   ]
@@ -74,13 +66,13 @@ rollup.rollup({
     format: 'es',
     banner: banner,
     intro: intro,
-    dest: 'lib/index.js'
+    file: 'lib/index.js'
   });
   bundle.write({
     format: 'cjs',
     banner: banner,
     intro: intro,
-    dest: 'index.js'
+    file: 'index.js'
   });
 }).catch(error => {
   console.error(error);

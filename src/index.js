@@ -1,4 +1,3 @@
-import { find, forEach } from 'mout/array';
 import pathToRegexp from 'path-to-regexp';
 import Promise from 'promise-polyfill';
 import {
@@ -11,6 +10,22 @@ const constants = {
   BROWSER: 'BROWSER',
   MEMORY: 'MEMORY',
   HASH: 'HASH'
+};
+
+// Copu from mout/array/forEach
+const forEach = (arr, callback, thisObj) => {
+  if (arr == null) {
+    return;
+  }
+  let i = -1,
+      len = arr.length;
+  while (++i < len) {
+    // we iterate over sparse items since there is no way to make it
+    // work properly on IE 7-8. see #64
+    if ( callback.call(thisObj, arr[i], i, arr) === false ) {
+      break;
+    }
+  }
 };
 
 class Router {
@@ -236,8 +251,14 @@ class Router {
    * @param {String} action i.e.) history.action
    */
   _change(location/*, action */) {
-    const route = find(this._routes, route => {
-      return !!route.regexp.exec(location.pathname);
+    let route;
+    forEach(this._routes, r => {
+      if (!!route) {
+        return;
+      }
+      if (!!r.regexp.exec(location.pathname)) {
+        route = r;
+      }
     });
 
     if (!route) {
